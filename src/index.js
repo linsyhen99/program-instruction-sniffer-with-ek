@@ -20,12 +20,12 @@ const app = async () => {
   switch (parserType) {
     case "manual": {
       console.log("Loading Parser from manually provided IDL file");
-      parser = await loadCustomIdlAndInitialiseParser(programId);
+      parser = loadCustomIdlAndInitialiseParser(programId);
       break;
     }
     case "registry": {
       console.log("Loading Parser from IDL registry");
-      parser = loadIdlFromRegistryAndInitialiseParser(programId);
+      parser = await loadIdlFromRegistryAndInitialiseParser(programId);
       break;
     }
   }
@@ -46,7 +46,7 @@ const sniffInstructions = async (
   whitelistedInstructions,
   rpcUrl
 ) => {
-  const limit = 25;
+  const limit = Number.parseInt(process.env.BLOCK_LIMIT ?? "25");
   let blockNumberResponse = await axios.post(rpcUrl, {
     jsonrpc: "2.0",
     id: 1,
