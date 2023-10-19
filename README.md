@@ -26,6 +26,7 @@ RPC_URL=
 IDL_TYPE=shank # "anchor" | "shank" | "kinobi"
 ```
 
+---
 
 # Initialising the Parser with a custom IDL file configuration
 
